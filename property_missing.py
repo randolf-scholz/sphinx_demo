@@ -11,7 +11,6 @@ class MyMetaClass(ABCMeta):
 
 
 class MyBaseClass(ABC, metaclass=MyMetaClass):
-
     def __new__(cls, *args, **kwargs):
         cls.baseclass_attribute = cls.__name__ + " is awesome"
         return super().__new__(cls, *args, **kwargs)
@@ -29,9 +28,9 @@ class MyClass(MyBaseClass, metaclass=MyMetaClass):
 assert hasattr(MyClass, "baseclass_attribute")
 
 assert MyClass.baseclass_property == "result"
-assert hasattr(MyClass, 'baseclass_property')
-assert 'baseclass_property' in dir(MyClass)
+assert hasattr(MyClass, "baseclass_property")
+assert "baseclass_property" in dir(MyClass)
 
 assert MyClass.metaclass_property == "result"
-assert hasattr(MyClass, 'metaclass_property')
-assert 'metaclass_property' in dir(MyClass)
+assert hasattr(MyClass, "metaclass_property")
+assert "metaclass_property" in dir(MyClass)

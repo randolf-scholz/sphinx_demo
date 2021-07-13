@@ -1,7 +1,5 @@
-sphinx_bugs
-===========
-
-**T**\ ime **S**\ eries **D**\ atasets and **M**\ odels
+dummy_module
+============
 
 Submodules
 ----------
@@ -10,7 +8,7 @@ Submodules
     :toctree:
     :template: mytemplate.rst
 
-    dummy_module
+    dummy_module.submodule
 
 Indices and tables
 ==================

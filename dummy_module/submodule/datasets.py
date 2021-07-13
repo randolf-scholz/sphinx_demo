@@ -1,6 +1,8 @@
 import logging
+import os
 from abc import ABC, ABCMeta, abstractmethod
 from functools import cache, wraps
+from time import sleep
 from pathlib import Path
 from warnings import warn
 
@@ -9,7 +11,9 @@ DATASETDIR = Path("~/.my_package/datasets")
 
 
 class DatasetMetaClass(ABCMeta):
-    """Meta Class for Datasets"""
+    """Meta Class for Datasets"""  # Some metaclass attribute.
+
+    metaclass_attribute: str = "result"
 
     def __init__(cls, *args, **kwargs):
         r"""Initialize the paths such that every dataset class has them available BEFORE instantiation!."""
@@ -24,9 +28,12 @@ class DatasetMetaClass(ABCMeta):
     @property
     @cache
     def metaclass_property(cls):
-        r"""Compute an expensive property (for example: dataset statistics)."""
+        r"""Some metaclass property."""
         warn("Caching metaclass property...")
         return "result"
+
+    def metaclass_function(cls):
+        r"""Some metaclass function."""
 
     # def __dir__(cls):
     #     return list(super().__dir__()) + ['metaclass_property']
@@ -35,13 +42,22 @@ class DatasetMetaClass(ABCMeta):
 class DatasetBaseClass(metaclass=DatasetMetaClass):
     """Base Class for datasets that all datasets must subclass"""
 
+    baseclass_attribute: str = "result"  # Some baseclass attribute.
+
     @classmethod
     @property
     @cache
     def baseclass_property(cls):
-        r"""Compute an expensive property (for example: dataset statistics)."""
+        r"""Some baseclass property."""
+        if os.environ.get("GENERATING_DOCS", False):
+            warn("cancelling execution due to 'GENERATING_DOCS' environment variable.")
+            return
         warn("Caching baseclass property...")
+        sleep(3)
         return "result"
+
+    def baseclass_function(cls):
+        r"""Some baseclass function."""
 
     @classmethod
     @abstractmethod
@@ -64,6 +80,7 @@ class DatasetBaseClass(metaclass=DatasetMetaClass):
 
 class DatasetExampleClass(DatasetBaseClass, metaclass=DatasetMetaClass):
     """One dataset. Since Datasets are"""
+
     url = "https://dataset_origin"
 
     @classmethod
@@ -81,12 +98,12 @@ class DatasetExampleClass(DatasetBaseClass, metaclass=DatasetMetaClass):
         """Custom clean function of the DatasetExampleClass."""
         pass
 
+
 class A:
     @property
     def foo():
         pass
 
+
 a = A()
-assert 'foo' in dir(a)  # fails
-
-
+assert "foo" in dir(a)  # fails

@@ -15,6 +15,7 @@ import datetime
 import os
 import sys
 
+os.environ["GENERATING_DOCS"] = "true"
 sys.path.insert(0, os.path.abspath("."))
 
 # -- Project information -----------------------------------------------------------------------------------------------
@@ -46,7 +47,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
-    "sphinx.ext.napoleon",
+    # "sphinx.ext.napoleon",
 ]
 
 intersphinx_mapping = {}

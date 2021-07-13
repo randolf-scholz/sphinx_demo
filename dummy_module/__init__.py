@@ -5,6 +5,6 @@ dummy_module
 """
 
 
-from dummy_module.bug1234 import DatasetMetaClass, DatasetBaseClass, DatasetExampleClass
+from dummy_module.submodule import BaseClass, MetaClass, SubClass
 
-__all__ = ['DatasetMetaClass', 'DatasetBaseClass', 'DatasetExampleClass']
+__all__ = ["BaseClass", "MetaClass", "SubClass"]
