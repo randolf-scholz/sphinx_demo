@@ -4,7 +4,7 @@ import logging
 from copy import copy
 from warnings import warn
 
-from dummy_module.submodule import DatasetBaseClass, DatasetMetaClass, DatasetExampleClass
+from dummy_module.datasets import DatasetBaseClass, DatasetMetaClass, DatasetExampleClass
 
 logger = logging.getLogger(__name__)
 

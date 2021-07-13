@@ -9,6 +9,7 @@ Submodules
     :template: mytemplate.rst
 
     dummy_module.submodule
+    dummy_module.datasets
 
 Indices and tables
 ==================
