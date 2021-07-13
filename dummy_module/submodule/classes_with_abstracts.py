@@ -28,9 +28,23 @@ class MetaClass(ABCMeta):
         return "metaclass_class_property"
 
     @classmethod
+    @property
+    @abstractmethod
+    def metaclass_abstract_class_property(mcs):
+        r"""Some metaclass_abstract_class_property."""
+        warn("Caching metaclass_abstract_class_property")
+        return "metaclass_abstract_class_property"
+
+    @classmethod
     def metaclass_classmethod(mcs):
         r"""Some classmethod."""
         return "metaclass_classmethod"
+
+    @classmethod
+    @abstractmethod
+    def metaclass_abstract_classmethod(mcs):
+        r"""Some abstract classmethod."""
+        return "metaclass_abstract_classmethod"
 
     @property
     def metaclass_property(cls):
@@ -38,14 +52,32 @@ class MetaClass(ABCMeta):
         warn("Caching metaclass_property")
         return "metaclass_property"
 
+    @property
+    @abstractmethod
+    def metaclass_abstract_property(cls):
+        r"""Some metaclass_abstract_property."""
+        warn("Caching metaclass_abstract_property")
+        return "metaclass_abstract_property"
+
     def metaclass_method(cls):
         r"""Some method."""
         return "metaclass_method"
+
+    @abstractmethod
+    def metaclass_abstract_method(cls):
+        r"""Some abstract method."""
+        return "metaclass_abstract_method"
 
     @staticmethod
     def metaclass_static_method():
         r"""Some static metaclass method."""
         return "metaclass_static_method"
+
+    @staticmethod
+    @abstractmethod
+    def metaclass_abstract_static_method():
+        r"""Some static metaclass method."""
+        return "metaclass_abstract_static_method"
 
 
 class BaseClass(metaclass=MetaClass):
@@ -63,9 +95,23 @@ class BaseClass(metaclass=MetaClass):
         return "baseclass_class_property"
 
     @classmethod
+    @property
+    @abstractmethod
+    def baseclass_abstract_class_property(cls):
+        r"""Some baseclass_abstract_class_property."""
+        warn("Caching baseclass_abstract_class_property")
+        return "baseclass_abstract_class_property"
+
+    @classmethod
     def baseclass_classmethod(cls):
         r"""Some classmethod."""
         return "baseclass_classmethod"
+
+    @classmethod
+    @abstractmethod
+    def baseclass_abstract_classmethod(cls):
+        r"""Some abstract classmethod."""
+        return "baseclass_abstract_classmethod"
 
     @property
     def baseclass_property(self):
@@ -74,14 +120,32 @@ class BaseClass(metaclass=MetaClass):
         sleep(3)
         return "baseclass_property"
 
+    @property
+    @abstractmethod
+    def baseclass_abstract_property(self):
+        r"""Some baseclass_abstract_property."""
+        warn("Caching baseclass_abstract_property")
+        return "baseclass_abstract_property"
+    
     def baseclass_method(self):
         r"""Some method."""
         return "baseclass_method"
+
+    @abstractmethod
+    def baseclass_abstract_method(self):
+        r"""Some abstract method."""
+        return "baseclass_abstract_method"
 
     @staticmethod
     def baseclass_static_method():
         r"""Some static baseclass method."""
         return "baseclass_static_method"
+
+    @staticmethod
+    @abstractmethod
+    def baseclass_abstract_static_method():
+        r"""Some static baseclass method."""
+        return "baseclass_abstract_static_method"
 
 
 class SubClass(BaseClass, metaclass=MetaClass):
@@ -99,9 +163,23 @@ class SubClass(BaseClass, metaclass=MetaClass):
         return "subclass_class_property"
 
     @classmethod
+    @property
+    @abstractmethod
+    def subclass_abstract_class_property(cls):
+        r"""Some subclass_abstract_class_property."""
+        warn("Caching subclass_abstract_class_property")
+        return "subclass_abstract_class_property"
+
+    @classmethod
     def subclass_classmethod(cls):
         r"""Some classmethod."""
         return "subclass_classmethod"
+
+    @classmethod
+    @abstractmethod
+    def subclass_abstract_classmethod(cls):
+        r"""Some abstract classmethod."""
+        return "subclass_abstract_classmethod"
 
     @property
     def subclass_property(self):
@@ -110,12 +188,29 @@ class SubClass(BaseClass, metaclass=MetaClass):
         sleep(3)
         return "subclass_property"
 
+    @property
+    @abstractmethod
+    def subclass_abstract_property(self):
+        r"""Some subclass_abstract_property."""
+        warn("Caching subclass_abstract_property")
+        return "subclass_abstract_property"
+    
     def subclass_method(self):
         r"""Some method."""
         return "subclass_method"
+
+    @abstractmethod
+    def subclass_abstract_method(self):
+        r"""Some abstract method."""
+        return "subclass_abstract_method"
 
     @staticmethod
     def subclass_static_method():
         r"""Some static subclass method."""
         return "subclass_static_method"
 
+    @staticmethod
+    @abstractmethod
+    def subclass_abstract_static_method():
+        r"""Some static subclass method."""
+        return "subclass_abstract_static_method"
